@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="之前参加推荐系统比赛的时候使用了xgboost作为排序模型，以NDCG作为模型训练的目标函数。之前没有理解为什么对成本函数做了二阶泰勒展开的xgboost可以使用对模型的打分不可微的NDCG为优化目标，这次把坑填上，顺带梳理了相关算法的发展脉络。 Preliminary Knowledge排序是搜索，推荐，广告，社交网络系统等应用的核心技术之一，它需要对用户发起的请求返回的一组结果依据相关性排序。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithms for Learning To Rank Challenge">
+<meta property="og:url" content="http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/index.html">
+<meta property="og:site_name" content="sherry-500">
+<meta property="og:description" content="之前参加推荐系统比赛的时候使用了xgboost作为排序模型，以NDCG作为模型训练的目标函数。之前没有理解为什么对成本函数做了二阶泰勒展开的xgboost可以使用对模型的打分不可微的NDCG为优化目标，这次把坑填上，顺带梳理了相关算法的发展脉络。 Preliminary Knowledge排序是搜索，推荐，广告，社交网络系统等应用的核心技术之一，它需要对用户发起的请求返回的一组结果依据相关性排序。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-06-07T12:04:32.000Z">
+<meta property="article:modified_time" content="2025-06-07T14:21:39.724Z">
+<meta property="article:author" content="sherry-500">
+<meta property="article:tag" content="Machine Learning">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Algorithms for Learning To Rank Challenge</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/06/07/hello-world/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/&text=Algorithms for Learning To Rank Challenge"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/&title=Algorithms for Learning To Rank Challenge"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/&is_video=false&description=Algorithms for Learning To Rank Challenge"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Algorithms for Learning To Rank Challenge&body=Check out this article: http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/&title=Algorithms for Learning To Rank Challenge"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/&title=Algorithms for Learning To Rank Challenge"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/&title=Algorithms for Learning To Rank Challenge"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/&title=Algorithms for Learning To Rank Challenge"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/&name=Algorithms for Learning To Rank Challenge&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/&t=Algorithms for Learning To Rank Challenge"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Preliminary-Knowledge"><span class="toc-number">1.</span> <span class="toc-text">Preliminary Knowledge</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RankNet"><span class="toc-number">1.1.</span> <span class="toc-text">RankNet</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Factoring-RankNet"><span class="toc-number">1.2.</span> <span class="toc-text">Factoring RankNet</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Information-Retrieval-Measures"><span class="toc-number">1.3.</span> <span class="toc-text">Information Retrieval Measures</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#NDCG"><span class="toc-number">1.3.1.</span> <span class="toc-text">NDCG</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Algorithms for Learning To Rank Challenge
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">sherry-500</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-06-07T12:04:32.000Z" class="dt-published" itemprop="datePublished">2025-06-07</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/Machine-Learning/">Machine Learning</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>之前参加推荐系统比赛的时候使用了xgboost作为排序模型，以NDCG作为模型训练的目标函数。之前没有理解为什么对成本函数做了二阶泰勒展开的xgboost可以使用对模型的打分不可微的NDCG为优化目标，这次把坑填上，顺带梳理了相关算法的发展脉络。</p>
+<h3 id="Preliminary-Knowledge"><a href="#Preliminary-Knowledge" class="headerlink" title="Preliminary Knowledge"></a>Preliminary Knowledge</h3><p>排序是搜索，推荐，广告，社交网络系统等应用的核心技术之一，它需要对用户发起的请求返回的一组结果依据相关性排序。</p>
+<p>排序算法可以分成两类：1. 基于学习成对偏好的方法，比如RankNet，LambdaRank，2. 使用回归或分类的方法直接预测相关性标签。对于第一种方法，排序算法的效果可以用对成对偏好的预测能力衡量，因此学习排序函数可以等价于学习预测成对偏好相对顺序的函数。对于第二种方法，模型可以完美预测相关性标签可以证明排序性能好，但是模型预测相关性标签的效果差却并不能反推排序能力弱。因此将排序问题转换为预测成对偏好问题的方法优于转换为分类或者回归问题，避免了学习一个不必要的困难问题。</p>
+<p>为了方便描述，接下来所有排序算法的讲解都以搜索场景为背景。</p>
+<blockquote>
+<p>Notation</p>
+<ul>
+<li>$ x \in \mathbb{R}^n $: url的特征向量</li>
+<li>$U \in \mathbb{R}$: url</li>
+<li>$f$: underlying model</li>
+<li>$s &#x3D; f(x)$: 模型对url的打分 </li>
+<li>$ U_i ▷ U_j$: $U_i$的排名高于$U_j$</li>
+<li>$\sigma \in \mathbb{R}$: 用于改变sigmoid形状的参数 </li>
+<li>$C$: cost function</li>
+<li>$w_k \in \mathbb{R}$：underlying model的参数</li>
+</ul>
+</blockquote>
+<h4 id="RankNet"><a href="#RankNet" class="headerlink" title="RankNet"></a>RankNet</h4><p>RankNet的训练数据按照query划分，同一组内的url两两成对，RankNet使用url对为输入。RankNet将underlying model对一对url的打分映射为一个概率：<br>$$<br>P_{ij} &#x3D; P(U_i ▷ U_j) &#x3D; \frac{1}{1 + e^{-\sigma(s_i - s_j)}}<br>\tag{1}<br>$$<br>然后使用交叉熵损失函数：<br>$$<br>C &#x3D; -\overline{P}<em>{ij}\log{P</em>{ij}} - (1 - \overline{P}<em>{ij})\log{(1 - P</em>{ij})}<br>\tag{2}<br>$$<br>对于一个给定query，令$S_{ij} \in {0, \pm 1}$，1表示url $i$的相关性比url $j$高，0表示相关性相同，-1表示url $i$的相关性比url $j$低。则有：<br>$$<br>\overline{P}<em>{ij} &#x3D; \frac{1}{2} (1 + S</em>{ij})<br>\tag{3}<br>$$<br>结合公式1，2，3：<br>$$<br>C &#x3D; \frac{1}{2}(1- S_{ij})\sigma(s_i - s_j) + \log{(1 + e ^{-\sigma(s_i - s_j)})}<br>\tag{4}<br>$$<br>当$S_{ij} &#x3D; 1$时：<br>$$<br>C &#x3D; \log{(1 + e ^{-\sigma(s_i - s_j)})}<br>\tag{5}<br>$$<br>当$S_{ij} &#x3D; -1$时：<br>$$<br>C &#x3D; \log{(1 + e ^{-\sigma(s_j - s_i)})}<br>\tag{6}<br>$$<br>对$C$求偏导，显然具有对称性：<br>$$<br>\frac{\partial{C}}{\partial{s_i}} &#x3D; \sigma(\frac{1}{2} (1 - S_{ij}) - \frac{1}{1 + e^{\sigma(s_i - s_j)}}) &#x3D; -\frac{\partial{C}}{\partial{s_j}}<br>\tag{7}<br>$$<br>使用梯度下降法更新参数:<br>$$<br>w_k \rightarrow w_k - \eta \frac{\partial{C}}{\partial{w_k}} &#x3D; w_k - \eta( \frac{\partial{C}}{\partial{s_i}} \frac{\partial{s_i}}{\partial{w_k}} + \frac{\partial{C}}{\partial{s_j}} \frac{\partial{s_j}}{\partial{w_k}})<br>\tag{8}<br>$$</p>
+<h4 id="Factoring-RankNet"><a href="#Factoring-RankNet" class="headerlink" title="Factoring RankNet"></a>Factoring RankNet</h4><p>$$<br>\frac{\partial{C}}{\partial{w_k}} &#x3D; \frac{\partial{C}}{\partial{s_i}} \frac{\partial{s_i}}{\partial{w_k}} + \frac{\partial{C}}{\partial{s_j}} \frac{\partial{s_j}}{\partial{w_k}} &#x3D; \sigma(\frac{1}{2}(1 - S_{ij}) - \frac{1}{1 + e ^{\sigma(s_i - s_j)}})(\frac{\partial{s_i}}{\partial{w_k}} - \frac{\partial{s_j}}{\partial{w_k}})<br>\tag{9}<br>$$</p>
+<h4 id="Information-Retrieval-Measures"><a href="#Information-Retrieval-Measures" class="headerlink" title="Information Retrieval Measures"></a>Information Retrieval Measures</h4><h5 id="NDCG"><a href="#NDCG" class="headerlink" title="NDCG"></a>NDCG</h5>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Preliminary-Knowledge"><span class="toc-number">1.</span> <span class="toc-text">Preliminary Knowledge</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RankNet"><span class="toc-number">1.1.</span> <span class="toc-text">RankNet</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Factoring-RankNet"><span class="toc-number">1.2.</span> <span class="toc-text">Factoring RankNet</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Information-Retrieval-Measures"><span class="toc-number">1.3.</span> <span class="toc-text">Information Retrieval Measures</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#NDCG"><span class="toc-number">1.3.1.</span> <span class="toc-text">NDCG</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/&text=Algorithms for Learning To Rank Challenge"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/&title=Algorithms for Learning To Rank Challenge"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/&is_video=false&description=Algorithms for Learning To Rank Challenge"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Algorithms for Learning To Rank Challenge&body=Check out this article: http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/&title=Algorithms for Learning To Rank Challenge"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/&title=Algorithms for Learning To Rank Challenge"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/&title=Algorithms for Learning To Rank Challenge"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/&title=Algorithms for Learning To Rank Challenge"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/&name=Algorithms for Learning To Rank Challenge&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/06/07/Algorithms-for-Learning-To-Rank-Challenge/&t=Algorithms for Learning To Rank Challenge"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    sherry-500
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
