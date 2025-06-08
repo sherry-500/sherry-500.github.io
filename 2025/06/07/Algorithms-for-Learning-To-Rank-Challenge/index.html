@@ -14,7 +14,7 @@
 <meta property="og:description" content="之前参加推荐系统比赛的时候使用了xgboost作为排序模型，以NDCG作为模型训练的目标函数。之前没有理解为什么对成本函数做了二阶泰勒展开的xgboost可以使用对模型的打分不可微的NDCG为优化目标，这次把坑填上，顺带梳理了相关算法的发展脉络。 Preliminary Knowledge 排序是搜索，推荐，广告，社交网络系统等应用的核心技术之一，它需要对用户发起的请求返回的一组结果依据相关性">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-06-07T12:04:32.000Z">
-<meta property="article:modified_time" content="2025-06-08T07:05:17.694Z">
+<meta property="article:modified_time" content="2025-06-08T07:09:17.018Z">
 <meta property="article:author" content="sherry-500">
 <meta property="article:tag" content="Machine Learning">
 <meta name="twitter:card" content="summary">
@@ -284,8 +284,8 @@ class="math display"><em>λ</em><sub><em>i</em></sub> = ∑<sub><em>j</em>�
 RankNet先为给定query计算所有的权重更新，再应用这些更新，这种问题分解的方式加快了模型的训练。</p>
 <h4 id="lambdarank">LambdaRank</h4>
 <p>以上两种算法的优化方向都是减少排序错误的样本对的数量，平等地看待每个样本对，不能很好地匹配NDCG这种依赖位置信息的指标。LambdaRank的核心思想是直接调整在梯度方向上的步长，避免了从NDCG这种不可导的成本函数中推导梯度的困难。在训练模型的过程中，我们需要的不是成本函数的输出，需要的只有梯度。</p>
-<p>我们重新定义成本函数<span class="math inline"><em>C</em></span>:
-<span
+<p>我们重新定义成本函数<span class="math inline"><em>C</em></span>:</p>
+<p><span
 class="math display"><em>C</em> = ∑<sub>{<em>i</em>, <em>j</em>} ∈ <em>I</em></sub>|<em>Δ</em><em>N</em><em>D</em><em>C</em><em>G</em><sub><em>i</em> ⇌ <em>j</em></sub>|log (1 + <em>e</em><sup>−<em>σ</em>(<em>s</em><sub><em>i</em></sub> − <em>s</em><sub><em>j</em></sub>)</sup>)</span>
 在前两种算法中<span
 class="math inline"><em>C</em></span>的定义的基础上增加一个乘数，表示仅交换结果列表中<span
@@ -326,8 +326,9 @@ $$</span></p>
 =  \frac{\partial{s_j} } {\partial{w_k} } (-\eta \lambda_j
 \frac{\partial{s_j} } {\partial{w_k} })
 $$</span></p>
-<p>其中学习率<span class="math inline"><em>η</em> &gt; 0</span>，<span
-class="math inline"><em>λ</em><sub><em>i</em></sub> = ∑<sub><em>j</em> : {<em>i</em>, <em>j</em>} ∈ <em>I</em></sub><em>λ</em><sub><em>i</em><em>j</em></sub> − ∑<sub><em>j</em> : {<em>j</em>, <em>i</em>} ∈ <em>I</em></sub><em>λ</em><sub><em>i</em><em>j</em></sub></span>，因为<span
+<p>其中学习率<span class="math inline"><em>η</em> &gt; 0</span>， <span
+class="math display"><em>λ</em><sub><em>i</em></sub> = ∑<sub><em>j</em> : {<em>i</em>, <em>j</em>} ∈ <em>I</em></sub><em>λ</em><sub><em>i</em><em>j</em></sub> − ∑<sub><em>j</em> : {<em>j</em>, <em>i</em>} ∈ <em>I</em></sub><em>λ</em><sub><em>i</em><em>j</em></sub></span>
+因为<span
 class="math inline"><em>U</em><sub><em>i</em></sub> ▷ <em>U</em><sub><em>j</em></sub></span>，<span
 class="math inline"><em>λ</em><sub><em>i</em><em>j</em></sub> &lt; 0</span>，所以<span
 class="math inline"><em>λ</em><sub><em>i</em></sub> &lt; 0</span>，可以推导出：
