@@ -1518,11 +1518,11 @@ article .content .caption {
 }
 .highlight {
   background: #474949;
-  color: #d1d9e1;
+  color: #acadaf;
 }
 .highlight .code .comment,
 .highlight .code .quote {
-  color: #969896;
+  color: #8f9ba3;
   font-style: italic;
 }
 .highlight .code .keyword,
