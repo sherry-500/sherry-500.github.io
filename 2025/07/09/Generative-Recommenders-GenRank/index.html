@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://example.com/images/GenRank-2.png">
 <meta property="og:image" content="http://example.com/images/GenRank-3.png">
 <meta property="article:published_time" content="2025-07-09T01:10:47.000Z">
-<meta property="article:modified_time" content="2025-07-09T09:40:41.460Z">
+<meta property="article:modified_time" content="2025-07-09T12:12:06.548Z">
 <meta property="article:author" content="sherry-500">
 <meta property="article:tag" content="Deep Learning">
 <meta property="article:tag" content="LLM">
@@ -352,6 +352,7 @@ biases带来25%的加速。总体上，GenRank将训练速度加快94.8%。</p>
 embedding和action embedding，比如<span class="math inline"><em>e</em><sub><em>i</em></sub> = <em>φ</em>(<em>x</em><sub><em>i</em></sub>) + <em>ϕ</em>(<em>a</em><sub><em>i</em></sub>)</span>，其中<span class="math inline"><em>φ</em>(), <em>ϕ</em>()</span>分别表示item和action的embedding模块。在这种组织方式下，模型的任务是预测用户在下一个item上的action。为了防止候选物品之间的信息泄露，使用了如图所示的掩码。</p>
 <p><img src="/images/GenRank-2.png"></p>
 <p><img src="/images/GenRank-3.png"></p>
+<p>其实，对于这一部分我也有疑问，按照前文验证自回归架构的实验的说法，不计算历史行为位置的损失可以得到更好的模型效果，这与图中历史行为序列部分停止梯度操作是对应的，但是结合掩码的设置方式，候选物品之间是没有任何依赖关系，它们之间都是不可见的，所以GenRank和自回归，生成式有什么关系呢？<del>这看起来更像判别式吧</del>。而且，按照前文的实验的说法明明去掉自回归的设置取得了更好的结果，但最后得出的结论是生成式架构是生成式推荐有效性的主要原因，<del>这何尝不是一种左右脑互搏</del>？</p>
 <h3 id="position-time-biases">Position &amp; Time Biases</h3>
 <p>HSTU使用可学习的相对注意力偏置来编码位置和时间信息，尽管这种设计对模型的效果至关重要，但引入了一个计算瓶颈：注意力偏置的I/O操作随着序列长度呈二次方增长，随着上下文窗口的扩大，会产生显著的开销。这篇论文提出了一种新的位置时间偏置，只需要线性的I/O操作，有效地减少了系统开销。包括三部分：</p>
 <ul>
