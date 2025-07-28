@@ -1522,7 +1522,10 @@ article .content .caption {
 }
 .highlight .code .comment,
 .highlight .code .quote {
-  color: #93a1a1;
+  color: #90bbc7;
+}
+.highlight .code .operator {
+  color: #017021;
 }
 .highlight .code .keyword,
 .highlight .code .selector-tag,
@@ -1535,7 +1538,7 @@ article .content .caption {
 .highlight .code .literal,
 .highlight .code .doctag,
 .highlight .code .regexp {
-  color: #2aa198;
+  color: #5bad84;
 }
 .highlight .code .title,
 .highlight .code .section,
@@ -1562,14 +1565,17 @@ article .content .caption {
 .highlight .code .link {
   color: #cb4b16;
 }
-.highlight .code .built_in,
+.highlight .code .built_in {
+  color: #ba2121;
+}
 .highlight .code .deletion {
   color: #dc322f;
 }
 .highlight .code .formula {
   background: #eee8d5;
 }
-.highlight .code .emphasis {
+.highlight .code .emphasis,
+.highlight .code .comment {
   font-style: italic;
 }
 .highlight .code .strong {
