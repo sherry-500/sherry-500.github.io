@@ -1522,15 +1522,15 @@ article .content .caption {
 }
 .highlight .code .comment,
 .highlight .code .quote {
-  color: #90bbc7;
+  color: #60a0b0;
 }
 .highlight .code .operator {
-  color: #017021;
+  color: #007020;
 }
 .highlight .code .keyword,
 .highlight .code .selector-tag,
 .highlight .code .addition {
-  color: #859900;
+  color: #7d9029;
 }
 .highlight .code .number,
 .highlight .code .string,
@@ -1538,7 +1538,7 @@ article .content .caption {
 .highlight .code .literal,
 .highlight .code .doctag,
 .highlight .code .regexp {
-  color: #5bad84;
+  color: #40a070;
 }
 .highlight .code .title,
 .highlight .code .section,
