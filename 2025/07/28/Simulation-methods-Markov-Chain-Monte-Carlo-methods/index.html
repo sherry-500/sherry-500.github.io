@@ -13,13 +13,13 @@
 <meta property="og:site_name" content="sherry-500">
 <meta property="og:description" content="通过观察贝叶斯分析的三个基础组成部分——后验分布（parameter inference），边际似然（hypothesis testing）和预测分布（prediction），如公式（1），（2），（3）所示    我们可以了解到，贝叶斯分析最初的一些局限性来源于缺乏从非标准后验分布中采样的算法，以及边际似然和预测分布缺乏解析解，导致需要大量的计算能力。尽管使用共轭先验可以使得后验和预测">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://sherry-500.github.io/images/MCMC.png">
+<meta property="og:image" content="https://sherry-500.github.io/images/MCMC_1.png">
 <meta property="article:published_time" content="2025-07-28T13:15:25.000Z">
-<meta property="article:modified_time" content="2025-07-31T14:04:58.794Z">
+<meta property="article:modified_time" content="2025-07-31T14:31:17.942Z">
 <meta property="article:author" content="sherry-500">
 <meta property="article:tag" content="Statistics">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://sherry-500.github.io/images/MCMC.png">
+<meta name="twitter:image" content="https://sherry-500.github.io/images/MCMC_1.png">
     
     
       
@@ -336,7 +336,7 @@ sampler进行推断，超参数设置为<span class="math inline"><em>α</em><su
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">summary<span class="punctuation">(</span>mcmc<span class="punctuation">(</span>kk<span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## </span></span><br><span class="line"><span class="comment">## Iterations = 1:10000</span></span><br><span class="line"><span class="comment">## Thinning interval = 1 </span></span><br><span class="line"><span class="comment">## Number of chains = 1 </span></span><br><span class="line"><span class="comment">## Sample size per chain = 10000 </span></span><br><span class="line"><span class="comment">## </span></span><br><span class="line"><span class="comment">## 1. Empirical mean and standard deviation for each variable,</span></span><br><span class="line"><span class="comment">##    plus standard error of the mean:</span></span><br><span class="line"><span class="comment">## </span></span><br><span class="line"><span class="comment">##           Mean             SD       Naive SE Time-series SE </span></span><br><span class="line"><span class="comment">##       40.15020        2.48875        0.02489        0.02903 </span></span><br><span class="line"><span class="comment">## </span></span><br><span class="line"><span class="comment">## 2. Quantiles for each variable:</span></span><br><span class="line"><span class="comment">## </span></span><br><span class="line"><span class="comment">##  2.5%   25%   50%   75% 97.5% </span></span><br><span class="line"><span class="comment">##    36    39    40    41    46</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hist<span class="punctuation">(</span>kk<span class="punctuation">,</span> main <span class="operator">=</span> <span class="string">"Histogram: Posterior mean change point"</span><span class="punctuation">,</span> xlab <span class="operator">=</span> <span class="string">"Posterior mean"</span><span class="punctuation">,</span> col <span class="operator">=</span> <span class="string">"blue"</span><span class="punctuation">,</span> breaks <span class="operator">=</span> <span class="number">25</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
 <p>后验结果表明矿难发生率在1890年从每年3.1下降到每年0.92。</p>
-<p><img src="/images/MCMC.png"></p>
+<p><img src="/images/MCMC_1.png"></p>
 
     <div>    
       <ul class="post-copyright">
