@@ -9,18 +9,18 @@
     <meta name="description" content="大规模无监督语言模型虽然可以学习广泛的世界知识和一些推理技能，但由于训练的无监督性它们的行为是难以控制的。目前获得可控性的方法是先收集人类对模型生成内容的相对质量的标签，然后使用通过人类反馈的强化学习（RLHF）对无监督的LM进行微调，使其与人类偏好一致。然而RLHF是一个复杂且不稳定的过程，需要先拟合一个反映人类偏好的奖励模型，再使用强化学习微调LM，最大化估计奖励，同时避免与原始模型偏离太远。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Direct Preference Optimization">
-<meta property="og:url" content="http://example.com/2025/07/11/Direct-Preference-Optimization/index.html">
+<meta property="og:url" content="https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/index.html">
 <meta property="og:site_name" content="sherry-500">
 <meta property="og:description" content="大规模无监督语言模型虽然可以学习广泛的世界知识和一些推理技能，但由于训练的无监督性它们的行为是难以控制的。目前获得可控性的方法是先收集人类对模型生成内容的相对质量的标签，然后使用通过人类反馈的强化学习（RLHF）对无监督的LM进行微调，使其与人类偏好一致。然而RLHF是一个复杂且不稳定的过程，需要先拟合一个反映人类偏好的奖励模型，再使用强化学习微调LM，最大化估计奖励，同时避免与原始模型偏离太远。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/DPO-1.png">
+<meta property="og:image" content="https://sherry-500.github.io/images/DPO-1.png">
 <meta property="article:published_time" content="2025-07-11T07:00:00.000Z">
 <meta property="article:modified_time" content="2025-07-13T02:59:42.556Z">
 <meta property="article:author" content="sherry-500">
 <meta property="article:tag" content="Machine Learning">
 <meta property="article:tag" content="LLM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/DPO-1.png">
+<meta name="twitter:image" content="https://sherry-500.github.io/images/DPO-1.png">
     
     
       
@@ -228,17 +228,17 @@ mjx-container[display="true"] + br {
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/07/11/Direct-Preference-Optimization/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/07/11/Direct-Preference-Optimization/&text=Direct Preference Optimization"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/07/11/Direct-Preference-Optimization/&is_video=false&description=Direct Preference Optimization"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Direct Preference Optimization&body=Check out this article: http://example.com/2025/07/11/Direct-Preference-Optimization/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/07/11/Direct-Preference-Optimization/&name=Direct Preference Optimization&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/07/11/Direct-Preference-Optimization/&t=Direct Preference Optimization"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/&text=Direct Preference Optimization"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/&is_video=false&description=Direct Preference Optimization"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Direct Preference Optimization&body=Check out this article: https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/&name=Direct Preference Optimization&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/&t=Direct Preference Optimization"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -347,6 +347,32 @@ Model</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a><
 </ol>
 </section>
 
+    <div>    
+      <ul class="post-copyright">
+        <li class="post-copyright-link">
+          <strong>本文作者：</strong>
+          <a href="/">sherry-500</a>
+        </li>
+        <li class="post-copyright-link">
+          <strong>本文标题：</strong>
+          <a href="{{ url_for(config.permalink) }}">
+    
+        <a class="" href="/2025/07/11/Direct-Preference-Optimization/">Direct Preference Optimization</a>
+    
+
+
+</a>
+        </li>
+        <li class="post-copyright-link">
+          <strong>本文链接：</strong>
+          <a title="Direct Preference Optimization">https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/</a>
+        </li>
+        <li class="post-copyright-license">
+          <strong>版权声明： </strong>
+          本文由 sherry-500 原创，采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" title="Attribution-NonCommercial-NoDerivatives 4.0 International" rel="license" target="_blank">CC BY-NC-ND 4.0</a>, 转载请保留以上声明信息！
+        </li>
+      </ul>
+    </div>
   </div>
 </article>
 
@@ -391,17 +417,17 @@ Model</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a><
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/07/11/Direct-Preference-Optimization/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/07/11/Direct-Preference-Optimization/&text=Direct Preference Optimization"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/07/11/Direct-Preference-Optimization/&is_video=false&description=Direct Preference Optimization"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Direct Preference Optimization&body=Check out this article: http://example.com/2025/07/11/Direct-Preference-Optimization/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/07/11/Direct-Preference-Optimization/&name=Direct Preference Optimization&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/07/11/Direct-Preference-Optimization/&t=Direct Preference Optimization"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/&text=Direct Preference Optimization"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/&is_video=false&description=Direct Preference Optimization"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Direct Preference Optimization&body=Check out this article: https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/&title=Direct Preference Optimization"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/&name=Direct Preference Optimization&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://sherry-500.github.io/2025/07/11/Direct-Preference-Optimization/&t=Direct Preference Optimization"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

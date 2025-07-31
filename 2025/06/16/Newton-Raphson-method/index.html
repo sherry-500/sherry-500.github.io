@@ -9,7 +9,7 @@
     <meta name="description" content="梯度下降法是仅使用梯度信息的一阶优化算法，忽略了曲率信息，计算简单且可能收敛慢。牛顿法使用Hessian矩阵结合了局部曲率信息，自适应地调整更新步长，进一步加速收敛。 一. 梯度下降法的局限性 梯度下降法沿参数空间种某一点的负梯度方向进行参数更新，本质上是基于一阶泰勒展开的局部线性近似。理想情况下，当每一次参数更新的步长无限小时，函数值的下降路径无限逼近于原函数。在实际应用种，步长越小，计算量">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Newton-Raphson method">
-<meta property="og:url" content="http://example.com/2025/06/16/Newton-Raphson-method/index.html">
+<meta property="og:url" content="https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/index.html">
 <meta property="og:site_name" content="sherry-500">
 <meta property="og:description" content="梯度下降法是仅使用梯度信息的一阶优化算法，忽略了曲率信息，计算简单且可能收敛慢。牛顿法使用Hessian矩阵结合了局部曲率信息，自适应地调整更新步长，进一步加速收敛。 一. 梯度下降法的局限性 梯度下降法沿参数空间种某一点的负梯度方向进行参数更新，本质上是基于一阶泰勒展开的局部线性近似。理想情况下，当每一次参数更新的步长无限小时，函数值的下降路径无限逼近于原函数。在实际应用种，步长越小，计算量">
 <meta property="og:locale" content="zh_CN">
@@ -226,17 +226,17 @@ mjx-container[display="true"] + br {
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/06/16/Newton-Raphson-method/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/06/16/Newton-Raphson-method/&text=Newton-Raphson method"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/06/16/Newton-Raphson-method/&is_video=false&description=Newton-Raphson method"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Newton-Raphson method&body=Check out this article: http://example.com/2025/06/16/Newton-Raphson-method/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/06/16/Newton-Raphson-method/&name=Newton-Raphson method&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/06/16/Newton-Raphson-method/&t=Newton-Raphson method"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/&text=Newton-Raphson method"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/&is_video=false&description=Newton-Raphson method"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Newton-Raphson method&body=Check out this article: https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/&name=Newton-Raphson method&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/&t=Newton-Raphson method"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -339,6 +339,32 @@ mjx-container[display="true"] + br {
 在L-M算法中，只要<span class="math inline"><em>λ</em></span>足够大，一定可以使得Hessian矩阵的所有特征值大于0，即保证Hessian矩阵一定正定。</p>
 <p>这种方法相当于对目标函数做了L2正则化。</p>
 
+    <div>    
+      <ul class="post-copyright">
+        <li class="post-copyright-link">
+          <strong>本文作者：</strong>
+          <a href="/">sherry-500</a>
+        </li>
+        <li class="post-copyright-link">
+          <strong>本文标题：</strong>
+          <a href="{{ url_for(config.permalink) }}">
+    
+        <a class="" href="/2025/06/16/Newton-Raphson-method/">Newton-Raphson method</a>
+    
+
+
+</a>
+        </li>
+        <li class="post-copyright-link">
+          <strong>本文链接：</strong>
+          <a title="Newton-Raphson method">https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/</a>
+        </li>
+        <li class="post-copyright-license">
+          <strong>版权声明： </strong>
+          本文由 sherry-500 原创，采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" title="Attribution-NonCommercial-NoDerivatives 4.0 International" rel="license" target="_blank">CC BY-NC-ND 4.0</a>, 转载请保留以上声明信息！
+        </li>
+      </ul>
+    </div>
   </div>
 </article>
 
@@ -383,17 +409,17 @@ mjx-container[display="true"] + br {
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/06/16/Newton-Raphson-method/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/06/16/Newton-Raphson-method/&text=Newton-Raphson method"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/06/16/Newton-Raphson-method/&is_video=false&description=Newton-Raphson method"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Newton-Raphson method&body=Check out this article: http://example.com/2025/06/16/Newton-Raphson-method/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/06/16/Newton-Raphson-method/&name=Newton-Raphson method&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/06/16/Newton-Raphson-method/&t=Newton-Raphson method"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/&text=Newton-Raphson method"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/&is_video=false&description=Newton-Raphson method"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Newton-Raphson method&body=Check out this article: https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/&title=Newton-Raphson method"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/&name=Newton-Raphson method&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://sherry-500.github.io/2025/06/16/Newton-Raphson-method/&t=Newton-Raphson method"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

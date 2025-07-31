@@ -9,16 +9,16 @@
     <meta name="description" content="本文整理分享了Meta在生成式推荐领域的开创性工作1：通过借鉴LLM的思路，重塑推荐系统范式，实现推荐系统的scaling。传统的基于深度学习的推荐模型依赖高基数的，异构的特征，需要满足高吞吐，低时延的要求，每天处理百亿级别的用户操作。尽管经过大量数据（包含数千个特征）的训练，但大多数工业界的深度学习推荐模型（DLRMs）的效果仍无法随着计算能力的提升而扩展。受到LLM成功的启发，Meta团队重新">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Generative Recommenders: HSTU">
-<meta property="og:url" content="http://example.com/2025/07/06/Generative-Recommenders-HSTU/index.html">
+<meta property="og:url" content="https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/index.html">
 <meta property="og:site_name" content="sherry-500">
 <meta property="og:description" content="本文整理分享了Meta在生成式推荐领域的开创性工作1：通过借鉴LLM的思路，重塑推荐系统范式，实现推荐系统的scaling。传统的基于深度学习的推荐模型依赖高基数的，异构的特征，需要满足高吞吐，低时延的要求，每天处理百亿级别的用户操作。尽管经过大量数据（包含数千个特征）的训练，但大多数工业界的深度学习推荐模型（DLRMs）的效果仍无法随着计算能力的提升而扩展。受到LLM成功的启发，Meta团队重新">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/HSTU-1.png">
-<meta property="og:image" content="http://example.com/images/HSTU-2.png">
-<meta property="og:image" content="http://example.com/images/HSTU-3.png">
-<meta property="og:image" content="http://example.com/images/HSTU-4.png">
-<meta property="og:image" content="http://example.com/images/HSTU-5.png">
-<meta property="og:image" content="http://example.com/images/HSTU-6.png">
+<meta property="og:image" content="https://sherry-500.github.io/images/HSTU-1.png">
+<meta property="og:image" content="https://sherry-500.github.io/images/HSTU-2.png">
+<meta property="og:image" content="https://sherry-500.github.io/images/HSTU-3.png">
+<meta property="og:image" content="https://sherry-500.github.io/images/HSTU-4.png">
+<meta property="og:image" content="https://sherry-500.github.io/images/HSTU-5.png">
+<meta property="og:image" content="https://sherry-500.github.io/images/HSTU-6.png">
 <meta property="article:published_time" content="2025-07-06T14:12:15.000Z">
 <meta property="article:modified_time" content="2025-07-08T13:11:50.606Z">
 <meta property="article:author" content="sherry-500">
@@ -27,7 +27,7 @@
 <meta property="article:tag" content="Recommendation System">
 <meta property="article:tag" content="Information Retrieval">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/HSTU-1.png">
+<meta name="twitter:image" content="https://sherry-500.github.io/images/HSTU-1.png">
     
     
       
@@ -235,17 +235,17 @@ mjx-container[display="true"] + br {
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/07/06/Generative-Recommenders-HSTU/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/07/06/Generative-Recommenders-HSTU/&text=Generative Recommenders: HSTU"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/07/06/Generative-Recommenders-HSTU/&is_video=false&description=Generative Recommenders: HSTU"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Generative Recommenders: HSTU&body=Check out this article: http://example.com/2025/07/06/Generative-Recommenders-HSTU/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/07/06/Generative-Recommenders-HSTU/&name=Generative Recommenders: HSTU&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/07/06/Generative-Recommenders-HSTU/&t=Generative Recommenders: HSTU"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/&text=Generative Recommenders: HSTU"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/&is_video=false&description=Generative Recommenders: HSTU"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Generative Recommenders: HSTU&body=Check out this article: https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/&name=Generative Recommenders: HSTU&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/&t=Generative Recommenders: HSTU"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -457,6 +457,32 @@ Generative Recommendations</a><a href="#fnref1" class="footnote-back" role="doc-
 </ol>
 </section>
 
+    <div>    
+      <ul class="post-copyright">
+        <li class="post-copyright-link">
+          <strong>本文作者：</strong>
+          <a href="/">sherry-500</a>
+        </li>
+        <li class="post-copyright-link">
+          <strong>本文标题：</strong>
+          <a href="{{ url_for(config.permalink) }}">
+    
+        <a class="" href="/2025/07/06/Generative-Recommenders-HSTU/">Generative Recommenders: HSTU</a>
+    
+
+
+</a>
+        </li>
+        <li class="post-copyright-link">
+          <strong>本文链接：</strong>
+          <a title="Generative Recommenders: HSTU">https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/</a>
+        </li>
+        <li class="post-copyright-license">
+          <strong>版权声明： </strong>
+          本文由 sherry-500 原创，采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" title="Attribution-NonCommercial-NoDerivatives 4.0 International" rel="license" target="_blank">CC BY-NC-ND 4.0</a>, 转载请保留以上声明信息！
+        </li>
+      </ul>
+    </div>
   </div>
 </article>
 
@@ -504,17 +530,17 @@ Generative Recommendations</a><a href="#fnref1" class="footnote-back" role="doc-
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/07/06/Generative-Recommenders-HSTU/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/07/06/Generative-Recommenders-HSTU/&text=Generative Recommenders: HSTU"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/07/06/Generative-Recommenders-HSTU/&is_video=false&description=Generative Recommenders: HSTU"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Generative Recommenders: HSTU&body=Check out this article: http://example.com/2025/07/06/Generative-Recommenders-HSTU/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/07/06/Generative-Recommenders-HSTU/&name=Generative Recommenders: HSTU&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/07/06/Generative-Recommenders-HSTU/&t=Generative Recommenders: HSTU"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/&text=Generative Recommenders: HSTU"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/&is_video=false&description=Generative Recommenders: HSTU"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Generative Recommenders: HSTU&body=Check out this article: https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/&title=Generative Recommenders: HSTU"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/&name=Generative Recommenders: HSTU&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://sherry-500.github.io/2025/07/06/Generative-Recommenders-HSTU/&t=Generative Recommenders: HSTU"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta property="og:type" content="website">
 <meta property="og:title" content="sherry-500">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="https://sherry-500.github.io/index.html">
 <meta property="og:site_name" content="sherry-500">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="sherry-500">
@@ -218,14 +218,14 @@ mjx-container[display="true"] + br {
         <section id="about" class="p-note">
   
   
-    <p>
+    <div class="social-icons" style="display: flex; flex-wrap: wrap; padding-top: 15px;">
       在这里找到我：
       
       
       
         
         
-          <a class="icon u-url" target="_blank" rel="noopener me" href="http://github.com/sherry-500" aria-label="github" title="github">
+          <a class="icon u-url icon-inline" target="_blank" rel="noopener me" href="http://github.com/sherry-500" aria-label="github" title="github">
             <i class="fa-brands fa-github"></i><!--
       ---></a><!--
     ---><!--
@@ -234,7 +234,7 @@ mjx-container[display="true"] + br {
       
         
         
-          <a class="icon u-url" target="_blank" rel="noopener me" href="/" aria-label="twitter" title="twitter">
+          <a class="icon u-url icon-inline" target="_blank" rel="noopener me" href="/" aria-label="twitter" title="twitter">
             <i class="fa-brands fa-twitter"></i><!--
       ---></a><!--
     ---><!--
@@ -243,7 +243,7 @@ mjx-container[display="true"] + br {
       
         
         
-          <a class="icon u-url" target="_blank" rel="noopener me" href="/" aria-label="facebook" title="facebook">
+          <a class="icon u-url icon-inline" target="_blank" rel="noopener me" href="/" aria-label="facebook" title="facebook">
             <i class="fa-brands fa-facebook"></i><!--
       ---></a><!--
     ---><!--
@@ -252,7 +252,7 @@ mjx-container[display="true"] + br {
       
         
         
-          <a class="icon u-email" target="_blank" rel="noopener" href="mailto:1845351383@qq.com" aria-label="mail" title="mail">
+          <a class="icon u-email icon-inline" target="_blank" rel="noopener" href="mailto:1845351383@qq.com" aria-label="mail" title="mail">
             <i class="fa-solid fa-envelope"></i><!--
       ---></a>
         <!--
@@ -261,23 +261,93 @@ mjx-container[display="true"] + br {
       
         
         
-          <a class="icon u-url" target="_blank" rel="noopener me" href="https://mastodon.social/@alice" aria-label="mastodon.social" title="mastodon.social">
-            <i class="fa-brands fa-mastodon"></i><!--
-      ---></a><!--
-    ---><!--
+          <span class="icon-inline">
+            <i class="fa-brands fa-weixin" id="wechat-icon"></i>
+
+<div id="wechatModal" class="modal">
+    <div class="modal-content">
+        <span class="close wechat-close">&times;</span>
+        <img src="/images/wechat_qrcode.jpg" alt="Scan to follow" width="100%" />
+        <!-- <img src="/images/logo.png" alt="Scan to follow" /> -->
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 获取元素
+    var Modal = document.getElementById("wechatModal");
+    var wechatIcon = document.getElementById("wechat-icon");
+    var wechatSpan = document.querySelector(".wechat-close"); // 使用 querySelector 获取第一个匹配的元素
+
+    // 点击按钮打开模态窗口
+    wechatIcon.onclick = function() {
+        Modal.style.display = "block";
+    }
+
+    // 点击 <span> (x), 关闭模态窗口
+    wechatSpan.onclick = function() {
+        Modal.style.display = "none";
+    }
+
+    // 点击模态窗口外部关闭模态窗口
+    window.onclick = function(event) {
+        if (event.target == Modal) {
+            console.log('wechatModal')
+            Modal.style.display = "none";
+        }else{
+            console.log('not wechatModal')
+        }
+    }
+</script>
+          </span>
+        <!--
     ---> 和 
         
       
         
         
-          <a class="icon u-url" target="_blank" rel="noopener me" href="https://fosstodon.org/@alice" aria-label="fosstodon.org" title="fosstodon.org">
-            <i class="fa-brands fa-mastodon"></i><!--
-      ---></a><!--
-    ---><!--
+          <span class="icon-inline">
+            <i class="fa-brands fa-qq" id="qq-icon"></i>
+
+<div id="qqModal" class="modal">
+    <div class="modal-content">
+        <span class="close qq-close">&times;</span>
+        <img src="/images/qq_qrcode.png" alt="Scan to follow" width="100%" />
+        <!-- <img src="/images/logo.png" alt="Scan to follow" /> -->
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 获取元素
+    var qqModal = document.getElementById("qqModal");
+    var qqIcon = document.getElementById("qq-icon");
+    var qqSpan = document.querySelector(".qq-close"); // 使用 querySelector 获取第一个匹配的元素
+
+    // 点击按钮打开模态窗口
+    qqIcon.onclick = function() {
+        qqModal.style.display = "block";
+    }
+
+    // 点击 <span> (x), 关闭模态窗口
+    qqSpan.onclick = function() {
+        qqModal.style.display = "none";
+    }
+
+    // 点击模态窗口外部关闭模态窗口
+    window.onclick = function(event) {
+        if (event.target == qqModal) {
+            console.log("qqModal")
+            qqModal.style.display = "none";
+        }else{
+            console.log("not qqModal")
+        }
+    }
+</script>
+          </span>
+        <!--
     --->.
         
       
-    </p>
+    </div>
   
 </section>
 
@@ -288,6 +358,108 @@ mjx-container[display="true"] + br {
   <span class="widget tagcloud">
     <a href="/tags/Deep-Learning/" style="font-size: 14px;">Deep Learning</a> <a href="/tags/Feature-Engineer/" style="font-size: 10px;">Feature Engineer</a> <a href="/tags/Information-Retrieval/" style="font-size: 12px;">Information Retrieval</a> <a href="/tags/Information-Theory/" style="font-size: 12px;">Information Theory</a> <a href="/tags/LLM/" style="font-size: 14px;">LLM</a> <a href="/tags/Machine-Learning/" style="font-size: 16px;">Machine Learning</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 10px;">Natural Language Processing</a> <a href="/tags/Optimization-methods/" style="font-size: 10px;">Optimization methods</a> <a href="/tags/Probability-Theory/" style="font-size: 18px;">Probability Theory</a> <a href="/tags/Recommendation-System/" style="font-size: 12px;">Recommendation System</a> <a href="/tags/Statistics/" style="font-size: 20px;">Statistics</a>
   </span>
+
+  <span class="h2">
+    Post Calender
+    <div class="container archive-calendar">
+    <div class="card">
+        <div id="post-calendar" class="card-content"></div>
+    </div>
+    <div class="calendar-footer">
+        <div class="contribution-legend">
+            <span>Less</span>
+            <span class="legend-color-box color-0"></span>
+            <span class="legend-color-box color-1"></span>
+            <span class="legend-color-box color-2"></span>
+            <span class="legend-color-box color-3"></span>
+            <span class="legend-color-box color-4"></span>
+            <span>More</span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/js/echarts.min.js"></script>
+<script type="text/javascript">
+    let myChart = echarts.init(document.getElementById('post-calendar'));
+
+    
+
+    let option = {
+        tooltip: {
+            show: true,
+            padding: 5,
+            backgroundColor: '#555',
+            borderColor: '#777',
+            borderWidth: 1,
+            textStyle: {
+                color: '#fff'                   // 白色字体
+            },
+            formatter: function (obj) {
+                var value = obj.value;
+                // console.log(moment(value[0]).format('MMM Do'))
+                // console.log(value[0].format('YYYY-MM-DD'))
+                return '<div style="font-size: 12px;">' + value[1] + ' posts on ' + value[0] + '</div>';
+            }
+        },
+        visualMap: {
+            show: false,
+            showLabel: false,
+            // categories: [0, 1, 2, 3, 4],
+            min: 0,
+            max: 3,
+            calculable: true,
+            inRange: {
+                symbol: 'rect',
+                color: ['#ebedf0', '#c6e48b', '#7bc96f', '#239a3b', '#196127']
+                // color: ['#ebedf0', '#ebedf0', '#ebedf0', '#ebedf0', '#ebedf0']
+            },
+            itemWidth: 12,
+            itemHeight: 12,
+            orient: 'horizontal',
+            left: 'center',
+            bottom: 0
+        },
+        calendar: [{
+            left: 'center',
+            range: ["2024-07-31", "2025-07-31"],
+            cellSize: [12.6, 12.6],
+            splitLine: {
+                show: false
+            },
+            itemStyle: {
+                // color: 'transparent',
+                borderColor: '#fff',
+                borderWidth: 2
+            },
+            yearLabel: {
+                show: false
+            },
+            monthLabel: {
+                // nameMap: 'en',
+                show: true,
+                nameMap: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                fontSize: 11
+            },
+            dayLabel: {
+                // formatter: '{start}  1st',
+                nameMap: ['', 'Mon', '', 'Wed', '', 'Fri', ''],
+                fontSize: 11
+            }
+        }],
+
+        series: [{
+            type: 'heatmap',
+            coordinateSystem: 'calendar',
+            calendarIndex: 0,
+            data: [["2024-07-31",0],["2024-08-01",0],["2024-08-02",0],["2024-08-03",0],["2024-08-04",0],["2024-08-05",0],["2024-08-06",0],["2024-08-07",0],["2024-08-08",0],["2024-08-09",0],["2024-08-10",0],["2024-08-11",0],["2024-08-12",0],["2024-08-13",0],["2024-08-14",0],["2024-08-15",0],["2024-08-16",0],["2024-08-17",0],["2024-08-18",0],["2024-08-19",0],["2024-08-20",0],["2024-08-21",0],["2024-08-22",0],["2024-08-23",0],["2024-08-24",0],["2024-08-25",0],["2024-08-26",0],["2024-08-27",0],["2024-08-28",0],["2024-08-29",0],["2024-08-30",0],["2024-08-31",0],["2024-09-01",0],["2024-09-02",0],["2024-09-03",0],["2024-09-04",0],["2024-09-05",0],["2024-09-06",0],["2024-09-07",0],["2024-09-08",0],["2024-09-09",0],["2024-09-10",0],["2024-09-11",0],["2024-09-12",0],["2024-09-13",0],["2024-09-14",0],["2024-09-15",0],["2024-09-16",0],["2024-09-17",0],["2024-09-18",0],["2024-09-19",0],["2024-09-20",0],["2024-09-21",0],["2024-09-22",0],["2024-09-23",0],["2024-09-24",0],["2024-09-25",0],["2024-09-26",0],["2024-09-27",0],["2024-09-28",0],["2024-09-29",0],["2024-09-30",0],["2024-10-01",0],["2024-10-02",0],["2024-10-03",0],["2024-10-04",0],["2024-10-05",0],["2024-10-06",0],["2024-10-07",0],["2024-10-08",0],["2024-10-09",0],["2024-10-10",0],["2024-10-11",0],["2024-10-12",0],["2024-10-13",0],["2024-10-14",0],["2024-10-15",0],["2024-10-16",0],["2024-10-17",0],["2024-10-18",0],["2024-10-19",0],["2024-10-20",0],["2024-10-21",0],["2024-10-22",0],["2024-10-23",0],["2024-10-24",0],["2024-10-25",0],["2024-10-26",0],["2024-10-27",0],["2024-10-28",0],["2024-10-29",0],["2024-10-30",0],["2024-10-31",0],["2024-11-01",0],["2024-11-02",0],["2024-11-03",0],["2024-11-04",0],["2024-11-05",0],["2024-11-06",0],["2024-11-07",0],["2024-11-08",0],["2024-11-09",0],["2024-11-10",0],["2024-11-11",0],["2024-11-12",0],["2024-11-13",0],["2024-11-14",0],["2024-11-15",0],["2024-11-16",0],["2024-11-17",0],["2024-11-18",0],["2024-11-19",0],["2024-11-20",0],["2024-11-21",0],["2024-11-22",0],["2024-11-23",0],["2024-11-24",0],["2024-11-25",0],["2024-11-26",0],["2024-11-27",0],["2024-11-28",0],["2024-11-29",0],["2024-11-30",0],["2024-12-01",0],["2024-12-02",0],["2024-12-03",0],["2024-12-04",0],["2024-12-05",0],["2024-12-06",0],["2024-12-07",0],["2024-12-08",0],["2024-12-09",0],["2024-12-10",0],["2024-12-11",0],["2024-12-12",0],["2024-12-13",0],["2024-12-14",0],["2024-12-15",0],["2024-12-16",0],["2024-12-17",0],["2024-12-18",0],["2024-12-19",0],["2024-12-20",0],["2024-12-21",0],["2024-12-22",0],["2024-12-23",0],["2024-12-24",0],["2024-12-25",0],["2024-12-26",0],["2024-12-27",0],["2024-12-28",0],["2024-12-29",0],["2024-12-30",0],["2024-12-31",0],["2025-01-01",0],["2025-01-02",0],["2025-01-03",0],["2025-01-04",0],["2025-01-05",0],["2025-01-06",0],["2025-01-07",0],["2025-01-08",0],["2025-01-09",0],["2025-01-10",0],["2025-01-11",0],["2025-01-12",0],["2025-01-13",0],["2025-01-14",0],["2025-01-15",0],["2025-01-16",0],["2025-01-17",0],["2025-01-18",0],["2025-01-19",0],["2025-01-20",0],["2025-01-21",0],["2025-01-22",0],["2025-01-23",0],["2025-01-24",0],["2025-01-25",0],["2025-01-26",0],["2025-01-27",0],["2025-01-28",0],["2025-01-29",0],["2025-01-30",0],["2025-01-31",0],["2025-02-01",0],["2025-02-02",0],["2025-02-03",0],["2025-02-04",0],["2025-02-05",0],["2025-02-06",0],["2025-02-07",0],["2025-02-08",0],["2025-02-09",0],["2025-02-10",0],["2025-02-11",0],["2025-02-12",0],["2025-02-13",0],["2025-02-14",0],["2025-02-15",0],["2025-02-16",0],["2025-02-17",0],["2025-02-18",0],["2025-02-19",0],["2025-02-20",0],["2025-02-21",0],["2025-02-22",0],["2025-02-23",0],["2025-02-24",0],["2025-02-25",0],["2025-02-26",0],["2025-02-27",0],["2025-02-28",0],["2025-03-01",0],["2025-03-02",0],["2025-03-03",0],["2025-03-04",0],["2025-03-05",0],["2025-03-06",0],["2025-03-07",0],["2025-03-08",0],["2025-03-09",0],["2025-03-10",0],["2025-03-11",0],["2025-03-12",0],["2025-03-13",0],["2025-03-14",0],["2025-03-15",0],["2025-03-16",0],["2025-03-17",0],["2025-03-18",0],["2025-03-19",0],["2025-03-20",0],["2025-03-21",0],["2025-03-22",0],["2025-03-23",0],["2025-03-24",0],["2025-03-25",0],["2025-03-26",0],["2025-03-27",0],["2025-03-28",0],["2025-03-29",0],["2025-03-30",0],["2025-03-31",0],["2025-04-01",0],["2025-04-02",0],["2025-04-03",0],["2025-04-04",0],["2025-04-05",0],["2025-04-06",0],["2025-04-07",0],["2025-04-08",0],["2025-04-09",0],["2025-04-10",0],["2025-04-11",0],["2025-04-12",0],["2025-04-13",0],["2025-04-14",0],["2025-04-15",0],["2025-04-16",0],["2025-04-17",0],["2025-04-18",0],["2025-04-19",0],["2025-04-20",0],["2025-04-21",0],["2025-04-22",0],["2025-04-23",0],["2025-04-24",0],["2025-04-25",0],["2025-04-26",0],["2025-04-27",0],["2025-04-28",0],["2025-04-29",0],["2025-04-30",0],["2025-05-01",0],["2025-05-02",0],["2025-05-03",0],["2025-05-04",0],["2025-05-05",0],["2025-05-06",0],["2025-05-07",0],["2025-05-08",0],["2025-05-09",0],["2025-05-10",0],["2025-05-11",0],["2025-05-12",0],["2025-05-13",0],["2025-05-14",0],["2025-05-15",0],["2025-05-16",0],["2025-05-17",0],["2025-05-18",0],["2025-05-19",0],["2025-05-20",0],["2025-05-21",0],["2025-05-22",0],["2025-05-23",0],["2025-05-24",0],["2025-05-25",0],["2025-05-26",0],["2025-05-27",0],["2025-05-28",0],["2025-05-29",0],["2025-05-30",0],["2025-05-31",0],["2025-06-01",0],["2025-06-02",0],["2025-06-03",0],["2025-06-04",0],["2025-06-05",0],["2025-06-06",0],["2025-06-07",2],["2025-06-08",0],["2025-06-09",2],["2025-06-10",0],["2025-06-11",1],["2025-06-12",0],["2025-06-13",0],["2025-06-14",1],["2025-06-15",1],["2025-06-16",1],["2025-06-17",0],["2025-06-18",0],["2025-06-19",0],["2025-06-20",0],["2025-06-21",0],["2025-06-22",0],["2025-06-23",0],["2025-06-24",0],["2025-06-25",0],["2025-06-26",0],["2025-06-27",0],["2025-06-28",0],["2025-06-29",0],["2025-06-30",0],["2025-07-01",0],["2025-07-02",0],["2025-07-03",0],["2025-07-04",0],["2025-07-05",0],["2025-07-06",1],["2025-07-07",0],["2025-07-08",0],["2025-07-09",1],["2025-07-10",0],["2025-07-11",1],["2025-07-12",1],["2025-07-13",0],["2025-07-14",0],["2025-07-15",1],["2025-07-16",0],["2025-07-17",1],["2025-07-18",0],["2025-07-19",0],["2025-07-20",0],["2025-07-21",0],["2025-07-22",0],["2025-07-23",0],["2025-07-24",0],["2025-07-25",0],["2025-07-26",0],["2025-07-27",2],["2025-07-28",1],["2025-07-29",0],["2025-07-30",0],["2025-07-31",0]]
+        }]
+
+    };
+         
+    myChart.setOption(option);
+</script>
+  </span>
+
   <span class="h2">最新发布</span>
   
   <ul class="post-list">
